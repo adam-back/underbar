@@ -110,6 +110,13 @@ var _ = {};
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var unique = [];
+    for(var i = 0; i < array.length; i++) {
+      if (_.indexOf(unique, array[i]) == -1) {
+        unique.push(array[i]);
+      };
+    };
+    return unique;
   };
 
 
