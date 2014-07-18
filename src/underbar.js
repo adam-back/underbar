@@ -125,6 +125,20 @@ var _ = {};
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
+    var output = [];
+    if(Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+          output.push(iterator(collection[i]));
+          //iterates over array. for-in loop shows hidden properties
+        }
+      }
+      else {
+        for(var value in collection) {
+          //else for-in loop for object
+          output.push(iterator(value));
+        }
+      }
+      return output;
   };
 
   /*
