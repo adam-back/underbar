@@ -181,11 +181,13 @@ var _ = {};
     var previousValue = collection[0];
     if(arguments.length > 2) {
       previousValue = accumulator;
-    }
-    
-   
-    for(var i = 0; i < collection.length; i++) {
-      total += iterator(previousValue, collection[i]);
+      for(var i = 0; i < collection.length; i++) {
+        total += iterator(previousValue, collection[i]);
+      }
+    } else {
+      for(var i = 1; i < collection.length; i++) {
+        total += iterator(previousValue, collection[i]);
+      }
     }
 
     return total; 
