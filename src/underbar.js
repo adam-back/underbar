@@ -230,6 +230,11 @@ var _ = {};
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
+    if(_.filter(collection, iterator).length === collection.length) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
