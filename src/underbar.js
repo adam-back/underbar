@@ -198,12 +198,32 @@ var _ = {};
   _.contains = function(collection, target) {
     // TIP: Many iteration problems can be most easily expressed in
     // terms of reduce(). Here's a freebie to demonstrate!
-    return _.reduce(collection, function(wasFound, item) {
-      if (wasFound) {
+    /*return _.reduce(collection, 
+      function(wasFound, item) {
+        if (wasFound) {
         return true;
+        }
+        return item === target;
+      }, 
+      false);*/
+
+    var match = false;
+    if(Array.isArray(collection)) {
+      for(var i = 0; i < collection.length; i++) {
+        if(target === collection[i]) {
+          match = true;
+          break;
+        }
       }
-      return item === target;
-    }, false);
+    } else {
+        for(var key in collection) {
+          if(collection[key] === target) {
+            match = true;
+            break;
+          }
+        }
+      }
+    return match;
   };
 
 
