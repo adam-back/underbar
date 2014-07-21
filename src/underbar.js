@@ -230,11 +230,19 @@ var _ = {};
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
-    if(_.filter(collection, iterator).length === collection.length) {
-      return true;
-    } else {
+    if(typeof iterator == 'function') {
+      if(_.filter(collection, iterator).length === collection.length) {
+        return true;
+      } else {
       return false;
-    }
+      }
+    } else {
+        var trues = _.reduce(collection, function(total, number) {
+          return total + number;
+        }, 0);
+
+        return trues == collection.length;
+      }
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
