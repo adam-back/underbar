@@ -251,6 +251,7 @@ var _ = {};
     // TIP: There's a very clever way to re-use every() here.
     var trues = _.filter(collection, iterator).length;
     return trues > 0;
+    //edit
   };
 
 
