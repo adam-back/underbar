@@ -255,8 +255,26 @@ var _ = {};
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-    var trues = _.filter(collection, iterator).length;
+    if(typeof iterator === 'function') {
+      var trues = _.filter(collection, iterator).length;
     return trues > 0;
+    } else {
+      var trues = 0;
+      for (var i = 0; i < collection.length; i++) {
+        switch(collection[i]) {
+          case true:
+            trues++;
+            break;
+          case 1:
+            trues++;
+            break;
+          case 'yes':
+            trues++;
+            break;
+        }
+      }
+      return trues > 0;
+    }
     //edit
   };
 
