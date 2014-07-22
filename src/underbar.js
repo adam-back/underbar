@@ -298,6 +298,13 @@ var _ = {};
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
+    var extended = obj;
+    for(var i = 1; i < arguments.length; i++) {
+      for(var key in arguments[i]) {
+        extended[key] = arguments[i][key];
+      }
+    }
+    return extended;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
@@ -366,6 +373,7 @@ var _ = {};
   // TIP: This function's test suite will ask that you not modify the original
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
+  //FINISH HERE for SECTION 2!!!!!!!!!!!<<<<<<<
   _.shuffle = function(array) {
   };
 
