@@ -395,6 +395,16 @@ var _ = {};
   // http://mdn.io/Array.prototype.slice
   //FINISH HERE for SECTION 2!!!!!!!!!!!<<<<<<<
   _.shuffle = function(array) {
+    var newArray = [];
+    for(var i = 0; i < array.length; i++) {
+      var random = Math.random();
+      if(random <= .5) {
+        newArray.push(array[i]);
+      }else {
+        newArray.unshift(array[i]);
+      }
+    }
+    return newArray;
   };
 
 
