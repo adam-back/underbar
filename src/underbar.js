@@ -360,6 +360,15 @@ var _ = {};
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var results = {};
+    return function() {
+      var key = Array.prototype.slice.call(arguments);
+      if(key in results) {
+        return results[key];
+      } else {
+        return results[key] = func.apply(this, arguments);
+      }
+    }
   };
 
   // Delays a function for the given number of milliseconds, and then calls
