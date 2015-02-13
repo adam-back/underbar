@@ -360,15 +360,22 @@ var _ = {};
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
-    var results = {};
-    return function() {
-      var key = Array.prototype.slice.call(arguments);
-      if(key in results) {
-        return results[key];
-      } else {
-        return results[key] = func.apply(this, arguments);
-      }
+    var cache = {};
+    //create cache for key-value data
+    
+    return function(val) {
+      //get argument for function
+
+      if(cache[val] === undefined) {
+        //if the val does not exist
+        cache[val] = func(val);
+        //run the val through the function and store in the cache
+      } 
+
+      return cache[val];
+      //return stored key-value pair
     }
+   
   };
 
   // Delays a function for the given number of milliseconds, and then calls
